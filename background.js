@@ -4,6 +4,23 @@
 let pageContent = '';
 let pageTitle = '';
 
+// Create context menu when extension is installed or updated
+chrome.runtime.onInstalled.addListener(() => {
+  chrome.contextMenus.create({
+    id: "askAboutPage",
+    title: "Ask ChatGPT about this page",
+    contexts: ["page"]
+  });
+});
+
+// Handle context menu clicks
+chrome.contextMenus.onClicked.addListener((info, tab) => {
+  if (info.menuItemId === "askAboutPage") {
+    // Send message to content script to show prompt dialog
+    chrome.tabs.sendMessage(tab.id, { action: 'showPromptDialog' });
+  }
+});
+
 // Listen for messages from content script or popup
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === 'storePageContent') {
