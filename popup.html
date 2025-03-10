@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page Reader with ChatGPT</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Page Reader</h1>
+
+    <div class="section">
+      <h2>ChatGPT API Settings</h2>
+      <div class="form-group">
+        <label for="apiKey">ChatGPT API Key:</label>
+        <input type="password" id="apiKey" placeholder="Enter your OpenAI API key">
+      </div>
+      <button id="saveApiKey">Save API Key</button>
+      <div id="apiKeySaved" class="success-message hidden">API key saved!</div>
+    </div>
+
+    <div class="section">
+      <h2>Ask about the current page</h2>
+      <div class="form-group">
+        <label for="prompt">Your question:</label>
+        <input type="text" id="prompt" placeholder="E.g., Summarize this article">
+      </div>
+      <button id="askButton">Ask ChatGPT</button>
+    </div>
+
+    <div id="responseContainer" class="hidden">
+      <h2>Response</h2>
+      <div id="responseContent"></div>
+    </div>
+
+    <div id="errorContainer" class="error-message hidden"></div>
+
+    <div class="footer">
+      <p>Look for the <strong>?</strong> button on web pages to quickly ask questions.</p>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
